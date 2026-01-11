@@ -1,7 +1,7 @@
 import { ToolDefinition } from '../../shared/types.js';
 import { getSystemInfoTool } from '../tools/system.js';
 import { runCommandTool } from '../tools/shell.js';
-import { writeFileTool, readFileTool, listDirectoryTool } from '../tools/filesystem.js';
+import { writeFileTool, readFileTool, listDirectoryTool, getCurrentDirectoryTool, changeDirectoryTool } from '../tools/filesystem.js';
 import { Tool } from '../tools/interface.js';
 
 /**
@@ -17,6 +17,8 @@ const registry: Record<string, Tool> = {
     [writeFileTool.definition.function.name]: writeFileTool,
     [readFileTool.definition.function.name]: readFileTool,
     [listDirectoryTool.definition.function.name]: listDirectoryTool,
+    [getCurrentDirectoryTool.definition.function.name]: getCurrentDirectoryTool,
+    [changeDirectoryTool.definition.function.name]: changeDirectoryTool,
 };
 
 export const TOOLS: ToolDefinition[] = Object.values(registry).map((t) => t.definition);

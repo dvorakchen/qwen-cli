@@ -93,3 +93,50 @@ export const listDirectoryTool: Tool = {
         }
     },
 };
+
+export const getCurrentDirectoryTool: Tool = {
+    definition: {
+        type: 'function',
+        function: {
+            name: 'get_current_directory',
+            description: 'Get the current working directory path.',
+            parameters: {
+                type: 'object',
+                properties: {},
+                required: [],
+            },
+        },
+    },
+    handler: () => {
+        return process.cwd();
+    },
+};
+
+export const changeDirectoryTool: Tool = {
+    definition: {
+        type: 'function',
+        function: {
+            name: 'change_directory',
+            description: 'Change the current working directory.',
+            parameters: {
+                type: 'object',
+                properties: {
+                    path: { type: 'string', description: 'The path to change to.' },
+                },
+                required: ['path'],
+            },
+        },
+    },
+    handler: (args) => {
+        try {
+            const newPath = path.resolve(process.cwd(), args.path);
+            if (!fs.existsSync(newPath)) {
+                return `Error: Directory not found at ${newPath}`;
+            }
+            process.chdir(newPath);
+            return `Changed directory to: ${process.cwd()}`;
+        } catch (e: any) {
+            return `Change Directory Error: ${e.message}`;
+        }
+    },
+};
