@@ -2,6 +2,8 @@
 
 一个基于 **React Ink** 和 **Node.js** 构建的专业终端 AI 助手。本项目采用**客户端-服务器架构**，拥有严格的类型定义和强大的工具调用机制，并内置**人在环路的安全保障**。
 
+![Screenshot](./screenshot.png)
+
 ## 🌟 核心特性
 
 - **交互式 TUI 界面**：基于 [Ink](https://github.com/vadimdemedes/ink) 构建，支持渐变标题、流式响应和 Markdown 渲染。
